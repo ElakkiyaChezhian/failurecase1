@@ -1,5 +1,4 @@
 project_id = "internal-test-prj-ly"
-network = "fc-network"
 google_compute_network="fc1-network"
 google_compute_global_address="fc-range"
 region="us-east1"
