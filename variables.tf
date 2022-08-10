@@ -4,9 +4,6 @@ variable "project_id" {
 variable "google_compute_network"{
     type = string
 }
-variable "network" {
-  type = string
-}
 variable "google_compute_global_address" {
     type = string
 }
