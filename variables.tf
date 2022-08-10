@@ -1,7 +1,7 @@
 variable "project_id" {
     type= string
 }
-variable "project_id2"{
+variable "google_compute_network"{
     type = string
 }
 variable "network" {
@@ -25,15 +25,10 @@ variable "google_apigee_instance" {
 variable "google_compute_region_backend_service" {
     type = string
 }
-variable"google_compute_subnetwork"{
-  type  = string
-}
 variable "google_compute_health_check" {
     type = string
 }
 variable "google_compute_forwarding_rule" {
     type = string
 }
-variable "google_compute_service_attachment"{
-    type = string
-}
+
