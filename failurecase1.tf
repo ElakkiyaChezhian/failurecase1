@@ -2,11 +2,11 @@ provider "google" {
     project = var.project_id
 }
 data "google_compute_network" "shared_vpc" {
-  name    = var.google_compute_network
+  name    = "apigee-network"
   project = var.project_id
 }
-resource "network" "apigee_network1" {
-  name       = var.network
+resource "google_compute_network" "apigee_network1" {
+  name       = var.google_compute_network
 }
 resource "google_compute_global_address" "apigee_range1" {
   name          = var.google_compute_global_address
