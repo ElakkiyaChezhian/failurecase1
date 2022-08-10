@@ -16,7 +16,7 @@ resource "google_compute_global_address" "apigee_range1" {
   network       = data.google_compute_network.shared_vpc.id
 }
 resource "google_service_networking_connection" "apigee_vpc_connection" {
-  network                 = network.apigee_network1.id
+  network                 = google_compute_network.apigee_network1.id
   service                 = "servicenetworking.googleapis.com"
   reserved_peering_ranges = [google_compute_global_address.apigee_range1.name]
 }
@@ -36,7 +36,7 @@ resource "google_project_service" "apis" {
 resource "google_apigee_organization" "apigeex_org" { 
   analytics_region   = var.region
   project_id         = var.project_id
-  authorized_network = network.apigee_network1.id
+  authorized_network = google_compute_network.apigee_network1.id
   depends_on         = [
     google_service_networking_connection.apigee_vpc_connection,
     //google_project_service.apis.apigee,
@@ -84,6 +84,6 @@ resource "google_compute_forwarding_rule" "apigee_ilb_target_service1" {
    load_balancing_scheme = "INTERNAL"
    backend_service       = google_compute_region_backend_service.producer_service_backend1.id
    all_ports             = true
-   network               = network.apigee_network1.id
-   //subnetwork            =    "projects/${network.apigee_network1.id}/regions/us-east1/subnetworks/prv-sn-1"
+   network               = google_compute_network.apigee_network1.id
+   //subnetwork            =    "projects/${google_compute_network.apigee_network1.id}/regions/us-east1/subnetworks/prv-sn-1"
 }
